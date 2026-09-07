@@ -1,118 +1,457 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Professional Network</title>
+    <title>ProConnect | Professional Network</title>
 
     <style>
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-            font-family: Arial, sans-serif;
-            background: #f3f2ef;
-            color: #222;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f6f8;
+            color: #1f2933;
         }
 
-        header {
-            background: white;
+        /* =========================
+           NAVIGATION
+        ========================== */
+
+        .navbar {
+            height: 64px;
+            background: #ffffff;
             border-bottom: 1px solid #ddd;
-            padding: 15px 30px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            padding: 0 6%;
+            gap: 25px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
         .logo {
-            font-size: 24px;
-            font-weight: bold;
+            font-size: 25px;
+            font-weight: 800;
+            color: #1769aa;
+            white-space: nowrap;
         }
 
-        nav a {
-            margin-left: 20px;
-            text-decoration: none;
-            color: #333;
+        .logo span {
+            color: #222;
         }
+
+        .search {
+            flex: 1;
+            max-width: 400px;
+            position: relative;
+        }
+
+        .search input {
+            width: 100%;
+            padding: 11px 15px 11px 42px;
+            border: none;
+            background: #eef2f5;
+            border-radius: 25px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 15px;
+            top: 9px;
+            font-size: 18px;
+        }
+
+        .nav-links {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            gap: 22px;
+        }
+
+        .nav-item {
+            text-align: center;
+            font-size: 12px;
+            color: #555;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .nav-item:hover {
+            color: #1769aa;
+        }
+
+        .nav-icon {
+            display: block;
+            font-size: 21px;
+            margin-bottom: 2px;
+        }
+
+        .avatar-small {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: #1769aa;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            margin: auto;
+        }
+
+        /* =========================
+           MAIN LAYOUT
+        ========================== */
 
         .container {
-            max-width: 1000px;
-            margin: 30px auto;
+            max-width: 1200px;
+            margin: 28px auto;
+            padding: 0 18px;
             display: grid;
-            grid-template-columns: 280px 1fr;
+            grid-template-columns: 260px 1fr 280px;
             gap: 20px;
-            padding: 0 15px;
         }
 
         .card {
             background: white;
-            border-radius: 8px;
-            padding: 20px;
             border: 1px solid #ddd;
-            margin-bottom: 20px;
+            border-radius: 10px;
+            overflow: hidden;
         }
 
-        .profile {
+        /* =========================
+           LEFT PROFILE
+        ========================== */
+
+        .profile-cover {
+            height: 70px;
+            background: linear-gradient(120deg, #1769aa, #4da3d9);
+        }
+
+        .profile-content {
             text-align: center;
+            padding: 0 18px 20px;
         }
 
-        .profile-photo {
-            width: 90px;
-            height: 90px;
+        .avatar-large {
+            width: 85px;
+            height: 85px;
             border-radius: 50%;
-            background: #ddd;
-            margin: 0 auto 15px;
-        }
-
-        .post-box {
-            margin-bottom: 20px;
-        }
-
-        textarea {
-            width: 100%;
-            height: 80px;
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            resize: none;
-        }
-
-        button {
-            margin-top: 10px;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
+            background: #1769aa;
+            border: 4px solid white;
+            margin: -42px auto 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 28px;
             font-weight: bold;
         }
 
-        .post-button {
-            background: #0a66c2;
+        .profile-content h2 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .profile-title {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 18px;
+        }
+
+        .profile-stats {
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+        }
+
+        .stat-number {
+            font-weight: bold;
+            color: #1769aa;
+            display: block;
+            font-size: 15px;
+        }
+
+        /* =========================
+           QUICK LINKS
+        ========================== */
+
+        .quick-links {
+            padding: 18px;
+        }
+
+        .quick-links h3 {
+            font-size: 15px;
+            margin-bottom: 15px;
+        }
+
+        .quick-links a {
+            display: block;
+            text-decoration: none;
+            color: #555;
+            padding: 8px 0;
+            font-size: 13px;
+        }
+
+        .quick-links a:hover {
+            color: #1769aa;
+        }
+
+        /* =========================
+           POST CREATOR
+        ========================== */
+
+        .post-creator {
+            padding: 18px;
+        }
+
+        .creator-row {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .creator-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: #1769aa;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+        }
+
+        .post-input {
+            flex: 1;
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            padding: 13px 18px;
+            color: #777;
+            cursor: pointer;
+        }
+
+        .post-options {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 17px;
+            padding-top: 14px;
+            border-top: 1px solid #eee;
+        }
+
+        .post-option {
+            color: #555;
+            font-size: 13px;
+            cursor: pointer;
+        }
+
+        .post-option:hover {
+            color: #1769aa;
+        }
+
+        /* =========================
+           POSTS
+        ========================== */
+
+        .post {
+            padding: 20px;
+            margin-top: 18px;
+        }
+
+        .post-header {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .post-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: #ddd;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .post-author {
+            font-weight: bold;
+            font-size: 15px;
+        }
+
+        .post-job {
+            font-size: 12px;
+            color: #666;
+            margin-top: 3px;
+        }
+
+        .post-time {
+            font-size: 11px;
+            color: #888;
+            margin-top: 3px;
+        }
+
+        .post-text {
+            margin-top: 18px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .post-actions {
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid #eee;
+            margin-top: 18px;
+            padding-top: 12px;
+        }
+
+        .post-action {
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            color: #555;
+            font-size: 13px;
+            padding: 8px 20px;
+            border-radius: 5px;
+        }
+
+        .post-action:hover {
+            background: #f1f4f7;
+            color: #1769aa;
+        }
+
+        /* =========================
+           RIGHT SIDEBAR
+        ========================== */
+
+        .sidebar-card {
+            padding: 20px;
+        }
+
+        .sidebar-card h3 {
+            font-size: 16px;
+            margin-bottom: 18px;
+        }
+
+        .suggestion {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 18px;
+            align-items: center;
+        }
+
+        .suggestion-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: #ddd;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+        }
+
+        .suggestion-info {
+            flex: 1;
+        }
+
+        .suggestion-name {
+            font-weight: bold;
+            font-size: 13px;
+        }
+
+        .suggestion-job {
+            font-size: 11px;
+            color: #777;
+            margin-top: 3px;
+        }
+
+        .connect-btn {
+            border: 1px solid #1769aa;
+            color: #1769aa;
+            background: white;
+            border-radius: 20px;
+            padding: 6px 12px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 11px;
+        }
+
+        .connect-btn:hover {
+            background: #1769aa;
             color: white;
         }
 
-        .post {
-            margin-bottom: 20px;
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+            text-align: center;
+            color: #888;
+            font-size: 12px;
+            padding: 30px;
         }
 
-        .post h3 {
-            margin-bottom: 8px;
-        }
+        /* =========================
+           MOBILE
+        ========================== */
 
-        .post p {
-            line-height: 1.5;
+        @media (max-width: 950px) {
+
+            .container {
+                grid-template-columns: 220px 1fr;
+            }
+
+            .right-sidebar {
+                display: none;
+            }
         }
 
         @media (max-width: 700px) {
-            .container {
-                grid-template-columns: 1fr;
+
+            .navbar {
+                padding: 0 15px;
+                gap: 10px;
             }
 
-            nav {
+            .logo {
+                font-size: 20px;
+            }
+
+            .search {
+                max-width: none;
+            }
+
+            .nav-links {
+                gap: 10px;
+            }
+
+            .nav-item span:last-child {
+                display: none;
+            }
+
+            .container {
+                grid-template-columns: 1fr;
+                margin-top: 15px;
+            }
+
+            .left-sidebar {
                 display: none;
             }
         }
@@ -121,73 +460,469 @@
 
 <body>
 
-<header>
-    <div class="logo">Professional Network</div>
+<!-- =========================
+     NAVIGATION BAR
+========================== -->
 
-    <nav>
-        <a href="#">Home</a>
-        <a href="#">My Network</a>
-        <a href="#">Jobs</a>
-        <a href="#">Messages</a>
+<header class="navbar">
+
+    <div class="logo">
+        Pro<span>Connect</span>
+    </div>
+
+    <div class="search">
+        <span class="search-icon">🔍</span>
+        <input
+            type="text"
+            placeholder="Search professionals..."
+        >
+    </div>
+
+    <nav class="nav-links">
+
+        <a class="nav-item" href="index.html">
+            <span class="nav-icon">🏠</span>
+            <span>Home</span>
+        </a>
+
+        <a class="nav-item" href="network.html">
+            <span class="nav-icon">🤝</span>
+            <span>Network</span>
+        </a>
+
+        <a class="nav-item" href="jobs.html">
+            <span class="nav-icon">💼</span>
+            <span>Jobs</span>
+        </a>
+
+        <a class="nav-item" href="messages.html">
+            <span class="nav-icon">💬</span>
+            <span>Messages</span>
+        </a>
+
+        <a class="nav-item" href="#">
+            <span class="nav-icon">🔔</span>
+            <span>Alerts</span>
+        </a>
+
+        <a class="nav-item" href="profile.html">
+            <div class="avatar-small">U</div>
+            <span>Me</span>
+        </a>
+
     </nav>
+
 </header>
+
+
+<!-- =========================
+     MAIN CONTENT
+========================== -->
 
 <div class="container">
 
-    <aside>
-        <div class="card profile">
-            <div class="profile-photo"></div>
 
-            <h2>Your Name</h2>
+    <!-- LEFT SIDEBAR -->
 
-            <p>Professional</p>
-
-            <br>
-
-            <p>Welcome to your professional network.</p>
-        </div>
+    <aside class="left-sidebar">
 
         <div class="card">
-            <h3>Profile Information</h3>
 
-            <br>
+            <div class="profile-cover"></div>
 
-            <p>Connections: 0</p>
-            <p>Profile views: 0</p>
+            <div class="profile-content">
+
+                <div class="avatar-large">U</div>
+
+                <h2>Your Name</h2>
+
+                <p class="profile-title">
+                    Professional | Your Industry
+                </p>
+
+                <div class="profile-stats">
+
+                    <div>
+                        <span class="stat-number">0</span>
+                        Connections
+                    </div>
+
+                    <div>
+                        <span class="stat-number">0</span>
+                        Profile views
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
+
+
+        <div class="card quick-links">
+
+            <h3>Quick Links</h3>
+
+            <a href="profile.html">👤 My Profile</a>
+
+            <a href="network.html">🤝 My Network</a>
+
+            <a href="jobs.html">💼 Find Jobs</a>
+
+            <a href="messages.html">💬 Messages</a>
+
+            <a href="#">🔖 Saved Posts</a>
+
+            <a href="#">⚙️ Settings</a>
+
+        </div>
+
     </aside>
+
+
+    <!-- MAIN FEED -->
 
     <main>
 
-        <div class="card post-box">
+        <!-- POST CREATOR -->
 
-            <h2>Create a post</h2>
+        <div class="card post-creator">
 
-            <br>
+            <div class="creator-row">
 
-            <textarea placeholder="What do you want to talk about?"></textarea>
+                <div class="creator-avatar">
+                    U
+                </div>
 
-            <button class="post-button">
-                Post
-            </button>
+                <div class="post-input">
+                    Start a post...
+                </div>
+
+            </div>
+
+            <div class="post-options">
+
+                <div class="post-option">
+                    📷 Photo
+                </div>
+
+                <div class="post-option">
+                    🎥 Video
+                </div>
+
+                <div class="post-option">
+                    📄 Article
+                </div>
+
+                <div class="post-option">
+                    💼 Job
+                </div>
+
+            </div>
 
         </div>
 
-        <div class="card post">
 
-            <h3>Welcome to Professional Network</h3>
+        <!-- POST 1 -->
 
-            <p>
-                This is the beginning of our professional networking
-                platform. Soon users will be able to create profiles,
-                connect with professionals, share posts and communicate.
+        <article class="card post">
+
+            <div class="post-header">
+
+                <div class="post-avatar">
+                    JS
+                </div>
+
+                <div>
+
+                    <div class="post-author">
+                        Jane Smith
+                    </div>
+
+                    <div class="post-job">
+                        Software Engineer
+                    </div>
+
+                    <div class="post-time">
+                        2 hours ago · 🌐
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="post-text">
+
+                Excited to share that I've started a new
+                chapter in my professional journey!
+
+                I'm looking forward to learning, connecting
+                with new people and contributing to exciting
+                projects.
+
+                <br><br>
+
+                #Career #Technology #Networking
+
+            </div>
+
+            <div class="post-actions">
+
+                <button class="post-action"
+                        onclick="likePost(this)">
+                    👍 Like
+                </button>
+
+                <button class="post-action">
+                    💬 Comment
+                </button>
+
+                <button class="post-action">
+                    🔄 Share
+                </button>
+
+                <button class="post-action">
+                    📌 Save
+                </button>
+
+            </div>
+
+        </article>
+
+
+        <!-- POST 2 -->
+
+        <article class="card post">
+
+            <div class="post-header">
+
+                <div class="post-avatar">
+                    MK
+                </div>
+
+                <div>
+
+                    <div class="post-author">
+                        Michael Kim
+                    </div>
+
+                    <div class="post-job">
+                        Business Consultant
+                    </div>
+
+                    <div class="post-time">
+                        Yesterday · 🌐
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="post-text">
+
+                What is the most important professional skill
+                you've developed during your career?
+
+                For me, it's communication.
+
+                Being able to clearly communicate ideas,
+                listen to others and work as a team has made
+                a huge difference.
+
+                What about you?
+
+            </div>
+
+            <div class="post-actions">
+
+                <button class="post-action"
+                        onclick="likePost(this)">
+                    👍 Like
+                </button>
+
+                <button class="post-action">
+                    💬 Comment
+                </button>
+
+                <button class="post-action">
+                    🔄 Share
+                </button>
+
+                <button class="post-action">
+                    📌 Save
+                </button>
+
+            </div>
+
+        </article>
+
+    </main>
+
+
+    <!-- RIGHT SIDEBAR -->
+
+    <aside class="right-sidebar">
+
+        <div class="card sidebar-card">
+
+            <h3>
+                People you may know
+            </h3>
+
+
+            <div class="suggestion">
+
+                <div class="suggestion-avatar">
+                    AM
+                </div>
+
+                <div class="suggestion-info">
+
+                    <div class="suggestion-name">
+                        Alex Morgan
+                    </div>
+
+                    <div class="suggestion-job">
+                        Product Manager
+                    </div>
+
+                </div>
+
+                <button class="connect-btn"
+                        onclick="connect(this)">
+                    Connect
+                </button>
+
+            </div>
+
+
+            <div class="suggestion">
+
+                <div class="suggestion-avatar">
+                    RW
+                </div>
+
+                <div class="suggestion-info">
+
+                    <div class="suggestion-name">
+                        Rachel Wilson
+                    </div>
+
+                    <div class="suggestion-job">
+                        Marketing Specialist
+                    </div>
+
+                </div>
+
+                <button class="connect-btn"
+                        onclick="connect(this)">
+                    Connect
+                </button>
+
+            </div>
+
+
+            <div class="suggestion">
+
+                <div class="suggestion-avatar">
+                    DO
+                </div>
+
+                <div class="suggestion-info">
+
+                    <div class="suggestion-name">
+                        Daniel Otieno
+                    </div>
+
+                    <div class="suggestion-job">
+                        ICT Specialist
+                    </div>
+
+                </div>
+
+                <button class="connect-btn"
+                        onclick="connect(this)">
+                    Connect
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="card sidebar-card">
+
+            <h3>
+                Professional Network
+            </h3>
+
+            <p style="font-size:13px; line-height:1.6; color:#666;">
+                Build your professional identity,
+                connect with people and discover
+                new opportunities.
             </p>
 
         </div>
 
-    </main>
+    </aside>
 
 </div>
 
+
+<footer>
+
+    © 2026 ProConnect · About · Privacy · Terms · Help
+
+</footer>
+
+
+<script>
+
+    /* =========================
+       LIKE BUTTON
+    ========================== */
+
+    function likePost(button) {
+
+        if (button.innerHTML.includes("👍")) {
+
+            button.innerHTML = "❤️ Liked";
+
+        } else {
+
+            button.innerHTML = "👍 Like";
+
+        }
+
+    }
+
+
+    /* =========================
+       CONNECT BUTTON
+    ========================== */
+
+    function connect(button) {
+
+        if (button.innerHTML === "Connect") {
+
+            button.innerHTML = "✓ Connected";
+
+            button.style.background = "#1769aa";
+            button.style.color = "white";
+
+        } else {
+
+            button.innerHTML = "Connect";
+
+            button.style.background = "white";
+            button.style.color = "#1769aa";
+
+        }
+
+    }
+
+</script>
+
 </body>
 </html>
+```
